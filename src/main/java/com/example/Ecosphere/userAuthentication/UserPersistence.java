@@ -10,12 +10,13 @@ public class UserPersistence {
     public boolean createUser(User user){
         StoredProcedure proc = null;
         try {
-            proc = new StoredProcedure("spUser(?, ?, ?, ?, ?)");
+            proc = new StoredProcedure("spUser(?, ?, ?, ?, ?, ?)");
             proc.setParameter(1, user.getUsername());
             proc.setParameter(2, user.getPassword());
             proc.setParameter(3,user.getEmail());
             proc.setParameter(4, user.getFirstName());
             proc.setParameter(5, user.getLastName());
+            proc.setParameter(6, 2);
             proc.statementExecute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -39,6 +40,7 @@ public class UserPersistence {
                 while (results.next()) {
                     user.setUsername( results.getString(1));
                     user.setPassword( results.getString(2));
+                    user.setRoleID(results.getLong(3));
                 }
             }
         } catch (SQLException e) {

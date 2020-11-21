@@ -1,12 +1,9 @@
 package com.example.Ecosphere.userAuthentication;
 
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
-
 
     private long userId;
     private String username;
@@ -16,8 +13,10 @@ public class User {
     private String email;
     private Date createdAt;
     private Timestamp lastUpdated;
+    private long roleID;
     private Encryption encryption;
-    User(){
+
+    User() {
         userId = -1;
         username = "";
         password = "";
@@ -26,7 +25,7 @@ public class User {
         createdAt = null;
         lastUpdated = null;
         encryption = new Encryption();
-
+        roleID = -1;
     }
 
     public String getEmail() {
@@ -94,21 +93,32 @@ public class User {
         this.lastUpdated = lastUpdated;
     }
 
-    public boolean createUserProfile(UserPersistence userDB) {
-        this.password = encryption.passwordEncryption(getPassword());
-        Boolean result = userDB.createUser(this);
-        return result;
+    public long getRoleID() {
+        return roleID;
     }
 
-    public boolean userLogin(UserPersistence userDB) {
+    public void setRoleID(long roleID) {
+        this.roleID = roleID;
+    }
+
+    public boolean createUserProfile(UserPersistence userDB) {
+        this.password = encryption.passwordEncryption(getPassword());
+        return userDB.createUser(this);
+    }
+
+    public String userLogin(UserPersistence userDB) {
         User userDup = userDB.loadUser(this.username);
         String receivedPassword = userDup.getPassword();
-        String receivedEmail = userDup.getEmail();
-        boolean result = encryption.passwordComparator(this.password,receivedPassword);
-        if(result){
-            return true;
+        String role = "";
+        boolean result = encryption.passwordComparator(this.password, receivedPassword);
+        if (result) {
+            if (userDup.getRoleID() == 2) {
+                role = "user";
+            } else {
+                role = "admin";
+            }
         }
-        return false;
+        return role;
     }
 
 }
