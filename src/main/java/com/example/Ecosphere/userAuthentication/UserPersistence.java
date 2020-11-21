@@ -37,8 +37,8 @@ public class UserPersistence {
             ResultSet results = proc.resultSetExecution();
             if (null != results) {
                 while (results.next()) {
-                    user.setUsername( results.getString(2));
-                    user.setPassword( results.getString(3));
+                    user.setUsername( results.getString(1));
+                    user.setPassword( results.getString(2));
                 }
             }
         } catch (SQLException e) {

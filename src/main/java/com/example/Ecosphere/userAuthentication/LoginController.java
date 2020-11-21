@@ -37,11 +37,9 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public boolean userlogin(@RequestParam(name = USERNAME) String username,
-                             @RequestParam(name = PASSWORD) String password){
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
+    public boolean userLogin(@RequestBody User user){
+        user.setUsername(user.getUsername());
+        user.setPassword(user.getPassword());
         boolean status = user.userLogin(userPersistence);
         return status;
     }

@@ -104,8 +104,8 @@ public class User {
         User userDup = userDB.loadUser(this.username);
         String receivedPassword = userDup.getPassword();
         String receivedEmail = userDup.getEmail();
-        boolean result = encryption.passwordComparator(receivedPassword,this.password);
-        if(result && receivedEmail.equals(this.email)){
+        boolean result = encryption.passwordComparator(this.password,receivedPassword);
+        if(result){
             return true;
         }
         return false;
