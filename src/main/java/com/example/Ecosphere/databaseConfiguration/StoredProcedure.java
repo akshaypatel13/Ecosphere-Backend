@@ -72,9 +72,7 @@ public class StoredProcedure {
         statement.registerOutParameter(paramIndex, java.sql.Types.BIGINT);
     }
 
-    public void setParameter(int colIndex, Date createdAt) throws SQLException {
-        statement.setDate(colIndex, (java.sql.Date) createdAt);
-    }
+
 
 
 }

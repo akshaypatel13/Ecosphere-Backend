@@ -1,11 +1,10 @@
 package com.example.Ecosphere.userAuthentication;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class LoginController {
 
     private final String USERNAME = "username";
@@ -19,19 +18,20 @@ public class LoginController {
         userPersistence = new UserPersistence();
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public boolean userRegistration(@RequestParam(name = USERNAME) String username,
-                                    @RequestParam(name = PASSWORD) String password,
-                                    @RequestParam(name = FIRST_NAME) String firstName,
-                                    @RequestParam(name = LAST_NAME) String lastName,
-                                    @RequestParam(name = EMAIL) String email){
+    @GetMapping("/")
+    public String greeting()
+    {
+        return "dcfa";
+    }
+
+    @PostMapping(value = "/abc",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public boolean userRegistration(@RequestBody User user){
         System.out.println("fsdfsdfsdf");
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setEmail(email);
+        user.setUsername(user.getUsername());
+        user.setPassword(user.getPassword());
+        user.setFirstName(user.getFirstName());
+        user.setLastName(user.getLastName());
+        user.setEmail(user.getLastName());
         Boolean status = user.createUserProfile(userPersistence);
         return status;
     }

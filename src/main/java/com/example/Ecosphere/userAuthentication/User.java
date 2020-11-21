@@ -96,13 +96,6 @@ public class User {
 
     public boolean createUserProfile(UserPersistence userDB) {
         this.password = encryption.passwordEncryption(getPassword());
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        try {
-            this.setCreatedAt(new SimpleDateFormat( "yyyyMMdd" ).parse( "20201120" ));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        this.setLastUpdated(timestamp);
         Boolean result = userDB.createUser(this);
         return result;
     }
