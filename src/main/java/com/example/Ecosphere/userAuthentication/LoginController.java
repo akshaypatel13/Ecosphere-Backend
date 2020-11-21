@@ -25,6 +25,7 @@ public class LoginController {
                                     @RequestParam(name = FIRST_NAME) String firstName,
                                     @RequestParam(name = LAST_NAME) String lastName,
                                     @RequestParam(name = EMAIL) String email){
+        System.out.println("fsdfsdfsdf");
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
