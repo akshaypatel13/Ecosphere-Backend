@@ -33,6 +33,7 @@ public class UserPersistence {
         StoredProcedure proc = null;
         User user = new User();
         try {
+
             proc = new StoredProcedure("spCheckUser(?)");
             proc.setParameter(1, username);
             ResultSet results = proc.resultSetExecution();
