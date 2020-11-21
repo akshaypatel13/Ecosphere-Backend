@@ -1,17 +1,18 @@
-package databaseConfiguration;
+package com.example.Ecosphere.databaseConfiguration;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
-public class storedProcedure {
+public class StoredProcedure {
 
     private String procedureName;
     private Connection connection;
     private CallableStatement statement;
 
-    public storedProcedure(String name) throws SQLException {
+    public StoredProcedure(String name) throws SQLException {
         this.procedureName = name;
         connection = null;
         statement = null;
@@ -20,7 +21,7 @@ public class storedProcedure {
     }
 
     public Connection getDBConnection() throws SQLException{
-        databaseConnection dbConnection = new databaseConnection();
+        DatabaseConnection dbConnection = new DatabaseConnection();
         connection = dbConnection.getDB();
         return connection;
     }
@@ -65,5 +66,15 @@ public class storedProcedure {
     {
         statement = connection.prepareCall("{call " + procedureName + "}");
     }
+
+    public void registerOutputParameterLong(int paramIndex) throws SQLException
+    {
+        statement.registerOutParameter(paramIndex, java.sql.Types.BIGINT);
+    }
+
+    public void setParameter(int colIndex, Date createdAt) throws SQLException {
+        statement.setDate(colIndex, (java.sql.Date) createdAt);
+    }
+
 
 }

@@ -1,19 +1,19 @@
-package databaseConfiguration;
+package com.example.Ecosphere.databaseConfiguration;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class databaseConnection {
+public class DatabaseConnection {
 
-    private static databaseConnection instance = null;
+    private static DatabaseConnection instance = null;
     private String url = "";
     private String user = "";
     private String password = "";
 
-    public static databaseConnection instance(){
+    public static DatabaseConnection instance(){
         if(instance == null){
-            instance = new databaseConnection();
+            instance = new DatabaseConnection();
         }
         else{
             return instance;
