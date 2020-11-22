@@ -15,17 +15,17 @@ public class LoginController {
 
     @GetMapping("/")
     public String greeting() {
-        return "dcfa";
+        return "hello";
     }
 
     @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean userRegistration(@RequestBody User user) {
-        System.out.println("fsdfsdfsdf");
+
         user.setUsername(user.getUsername());
         user.setPassword(user.getPassword());
         user.setFirstName(user.getFirstName());
         user.setLastName(user.getLastName());
-        user.setEmail(user.getLastName());
+        user.setEmail(user.getEmail());
         return user.createUserProfile(userPersistence);
     }
 

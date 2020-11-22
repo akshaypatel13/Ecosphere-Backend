@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class, DataSourceAutoConfiguration.class })
-@CrossOrigin("*")
+@CrossOrigin
 public class EcosphereApplication {
 
 	public static void main(String[] args) {
