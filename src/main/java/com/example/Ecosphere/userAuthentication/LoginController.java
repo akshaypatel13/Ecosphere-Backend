@@ -18,28 +18,32 @@ public class LoginController {
         return "hello";
     }
 
-    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/register", consumes = {"application/json;charset=UTF-8"}, produces = {"application/json;charset=UTF-8"},method = RequestMethod.POST)
     public boolean userRegistration(@RequestBody User user) {
-
-        user.setUsername(user.getUsername());
+        user.setEmail(user.getEmail());
+        System.out.println(user.getPassword());
         user.setPassword(user.getPassword());
         user.setFirstName(user.getFirstName());
         user.setLastName(user.getLastName());
-        user.setEmail(user.getEmail());
         return user.createUserProfile(userPersistence);
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login",  consumes = {"application/json;charset=UTF-8"}, produces = {"application/json;charset=UTF-8"},method = RequestMethod.POST)
     public String userLogin(@RequestBody User user) {
-        user.setUsername(user.getUsername());
+        user.setEmail(user.getEmail());
+        System.out.println("Controller"+user.getEmail());
+
         user.setPassword(user.getPassword());
         String status = user.userLogin(userPersistence);
         String result = null;
+        System.out.print(status);
         if (status.equals("admin") || status.equals("user")) {
             result =  status;
-        } else if (status.equals("")) {
+        } else{
             result = "Bad Credentials";
         }
+        System.out.print("status");
+        System.out.print(result);
         return result;
     }
 
