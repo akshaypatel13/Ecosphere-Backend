@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class DatabaseConnection {
 
     private static DatabaseConnection instance = null;
-    private String url = "jdbc:mysql://ti-5193.czlhweioasi8.ca-central-1.rds.amazonaws.com/sys?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private String user = "admin";
-    private String password = "admin1234";
+    private String url = System.getenv("URL");
+    private String user = System.getenv("USER");
+    private String password = System.getenv("PASSWORD");
 
     public static DatabaseConnection instance(){
         if(instance == null){
