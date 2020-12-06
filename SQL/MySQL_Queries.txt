@@ -1,0 +1,153 @@
+------------------------TABLES--------------------------------
+
+
+CREATE TABLE `airquality` (
+  `country_name` varchar(50) DEFAULT NULL,
+  `country_code` varchar(20) NOT NULL,
+  `cyear` year DEFAULT NULL,
+  `quality` decimal(10,0) DEFAULT NULL,
+  `timestamp1` timestamp(6) NULL DEFAULT NULL,
+  PRIMARY KEY (`country_code`)
+);
+
+
+CREATE TABLE `Events` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `eventName` varchar(255) DEFAULT NULL,
+  `eventDescription` varchar(255) DEFAULT NULL,
+  `eventLink` varchar(255) DEFAULT NULL,
+  `eventImg` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE `greenhouseEmissions` (
+  `id` int NOT NULL,
+  `factorName` varchar(45) DEFAULT NULL,
+  `value` double DEFAULT NULL,
+  `year` timestamp(6) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE `halifaxtemp` (
+  `climateID` int NOT NULL,
+  `date` date DEFAULT NULL,
+  `maxTemp` varchar(10) DEFAULT NULL,
+  `minTemp` varchar(10) DEFAULT NULL,
+  `stationName` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`climateID`)
+);
+
+
+CREATE TABLE `HealthFactors` (
+  `ID` int NOT NULL,
+  `Year` timestamp(6) NULL DEFAULT NULL,
+  `Factor` varchar(100) DEFAULT NULL,
+  `Fnumber` float DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+);
+
+
+CREATE TABLE `healthimpact` (
+  `year` varchar(4) DEFAULT NULL,
+  `global` int DEFAULT NULL,
+  `canada` int DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ;
+
+
+CREATE TABLE `pie` (
+  `id` int NOT NULL,
+  `year` year DEFAULT NULL,
+  `ageGroup` varchar(45) DEFAULT NULL,
+  `death` float DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ;
+
+
+CREATE TABLE `Products` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `productName` varchar(255) DEFAULT NULL,
+  `productDescription` varchar(6000) DEFAULT NULL,
+  `productLabel` varchar(6000) DEFAULT NULL,
+  `productPrice` varchar(255) DEFAULT NULL,
+  `productLink` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+);
+
+
+CREATE TABLE `user` (
+  `user_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `first_name` varchar(45) DEFAULT NULL,
+  `last_name` varchar(45) DEFAULT NULL,
+  `created` date DEFAULT NULL,
+  `last_updated` timestamp NULL DEFAULT NULL,
+  `roleID` bigint DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+);
+
+
+CREATE TABLE `wordcloud` (
+  `id` int NOT NULL,
+  `word` varchar(45) DEFAULT NULL,
+  `frequency` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
+-------------------------STORED PROCEDURES---------------------
+
+CREATE DEFINER=`admin`@`%` PROCEDURE `spCheckUser`(IN checkUser VARCHAR(255) )
+BEGIN
+	select email,password,roleID from user where email = checkUser;
+END
+
+
+CREATE DEFINER=`admin`@`%` PROCEDURE `spCreateEvent`(IN name VARCHAR(255), IN descr VARCHAR(255), IN link VARCHAR(255), IN imgLink VARCHAR(255))
+BEGIN
+	insert into Events(eventName,eventDescription,eventLink,eventImg)values(name,descr,link,imgLink);
+END
+
+
+CREATE DEFINER=`admin`@`%` PROCEDURE `spCreateProduct`(IN name VARCHAR(255),IN descr VARCHAR(255),IN label VARCHAR(255), IN price VARCHAR(255), IN link VARCHAR(255) )
+BEGIN
+	insert into Products(productName,productDescription,productLabel,productPrice,productLink)values(name,descr,label,price,link);
+END
+
+
+CREATE DEFINER=`admin`@`%` PROCEDURE `spDeleteEvent`(IN eventID int)
+BEGIN
+	delete from Events where id = eventID;
+END
+
+
+CREATE DEFINER=`admin`@`%` PROCEDURE `spLoadEvents`()
+BEGIN
+	select * from Events;
+END
+
+
+CREATE DEFINER=`admin`@`%` PROCEDURE `spLoadProducts`()
+BEGIN
+
+	select id,productName,productDescription,productLabel,productPrice,productLink from Products;
+
+END
+
+
+CREATE DEFINER=`admin`@`%` PROCEDURE `spLoadProductsByID`(IN productID int)
+BEGIN
+	select id,productName,productDescription,productLabel,productPrice,productLink from Products where id = productID;
+END
+
+
+CREATE DEFINER=`admin`@`%` PROCEDURE `spUser`(IN email VARCHAR(255), IN password VARCHAR(255),  IN first_name VARCHAR(255), 
+IN last_name VARCHAR(255), IN roleId bigint(4))
+BEGIN
+	insert into user(email,password,first_name,last_name,created,last_updated,roleID) values ( email,password,first_name, last_name,curdate(),now(),roleId);
+END
