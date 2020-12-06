@@ -1,5 +1,6 @@
 # Ecosphere-Backend
 *CSCI5193 & CSCI4193 - Technology Innovation Project*
+[![Gradle Plugins Release](src/main/resources/static/gradle.png)](https://plugins.gradle.org/plugin/com.palantir.git-version)
 
 ## Back-End Features
 
