@@ -10,7 +10,7 @@
 
 ## Getting started
 
-1. Clone the github repository ()
+1. Clone the github repository https://github.com/akshaypatel13/Ecosphere-Backend.git
 2. Open IntelliJ or any IDE with the cloned repository project.
 3. Build the gradle
 4. Create the database schema based on the SQL queries for table structure and stored procedures available in the SQL folder of the project.
