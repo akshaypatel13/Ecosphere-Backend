@@ -56,4 +56,21 @@ public class EventPersistence {
         }
         return true;
     }
+
+    public boolean deleteEvent(Event event){
+        StoredProcedure proc = null;
+        try {
+            proc = new StoredProcedure("spDeleteEvent(?)");
+            proc.setParameter(1,event.getEventID());
+            proc.statementExecute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (null != proc) {
+                proc.cleanUp();
+            }
+        }
+        return true;
+    }
 }

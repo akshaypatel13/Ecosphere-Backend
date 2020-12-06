@@ -31,5 +31,9 @@ public class EventController {
         return event.createEvent(eventPersistence);
     }
 
+    @RequestMapping(value = "/deleteEvent", consumes = {"application/json;charset=UTF-8"}, produces = {"application/json;charset=UTF-8"},method = RequestMethod.POST)
+    public boolean deleteEvent(@RequestBody Event event) {
+        return eventPersistence.deleteEvent(event);
+    }
 
-}
+    }
