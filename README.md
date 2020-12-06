@@ -1,6 +1,5 @@
 # Ecosphere-Backend
-*CSCI5193 & CSCI4193 - Technology Innovation Project*  
-<a alt="Java"><img src="https://img.shields.io/badge/Java-v1.8-orange.svg" />
+*CSCI5193 & CSCI4193 - Technology Innovation Project*  <a alt="Java"><img src="https://img.shields.io/badge/Java-v1.8-orange.svg" />
 
 
 ## Back-End Features
@@ -13,7 +12,7 @@
 ## Getting started
 
 1. Clone the github repository https://github.com/akshaypatel13/Ecosphere-Backend.git
-2. Open IntelliJ or any IDE with the cloned repository project.
+2. Open IntelliJ or any IDE with the cloned repository project (Spring v2.4.0).
 3. Build the gradle
 4. Create the database schema based on the SQL queries for table structure and stored procedures available in the SQL folder of the project.
 5. After successful database query implementation, execute the main function of the EcoSphere Application class.
