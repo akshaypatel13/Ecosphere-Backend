@@ -1,5 +1,5 @@
 # Ecosphere-Backend
-*CSCI5193 & CSCI4193 - Technology Innovation Project*  [![Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/485bb945b088c6fd471e)
+*CSCI5193 & CSCI4193 - Technology Innovation Project* 
 <a alt="Java"><img src="https://img.shields.io/badge/Java-v1.8-orange.svg" />
 
 
