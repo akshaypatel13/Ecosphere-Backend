@@ -8,6 +8,13 @@ import java.util.Date;
 
 public class StoredProcedure {
 
+    /*
+    The StoredProcedure provides the persistence class to perform CRUD operations on the data using the
+    stored procedures present in the database that helps avoid any layer violations and utilize the
+    computation resources of the database server and after every data retrieval the cleanup is performed
+    to any unwanted congestion in the network.
+     */
+
     private String procedureName;
     private Connection connection;
     private CallableStatement statement;

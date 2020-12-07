@@ -7,6 +7,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class LoginController {
 
+    /*
+    The userAuthentication package performs the authentication and authorization for the particular user,
+    where the LoginController compares the credentials of the user present in the database and send the
+    user role to the frontEnd part for navigation purposes. The BcryptPasswordEncoder is used
+    to encrypt the password before storing in the database to avoid any data breach.
+     */
+
     UserPersistence userPersistence;
 
     LoginController() {
