@@ -19,3 +19,8 @@ The Ecosphere web application uses Angular(FrontEnd) and Spring Boot Framework(B
 5. After successful database query implementation, execute the main function of the EcoSphere Application class and the APIs present in the FrontEnd Application pointing towards the Angular heroku deployment should be replaced with local URL of BackEnd.
 6. The backend project is hosted locally and can be accessed on the http://localhost:8080/ 
 
+
+## References
+
+1. https://github.com/akshaypatel13/Group-Formation-Tool.git
+2. https://www.youtube.com/watch?v=_696SMBLqRA
