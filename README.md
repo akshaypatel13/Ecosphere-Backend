@@ -16,6 +16,6 @@ The Ecosphere web application uses Angular(FrontEnd) and Spring Boot Framework(B
 2. Open IntelliJ or any IDE with the cloned repository project (Spring v2.4.0).
 3. Build the gradle
 4. Create the database schema based on the SQL queries for table structure and stored procedures available in the SQL folder of the project.
-5. After successful database query implementation, execute the main function of the EcoSphere Application class.
+5. After successful database query implementation, execute the main function of the EcoSphere Application class and the APIs present in the FrontEnd Application pointing towards the Angular heroku deployment should be replaced with local URL of BackEnd.
 6. The backend project is hosted locally and can be accessed on the http://localhost:8080/ 
 
